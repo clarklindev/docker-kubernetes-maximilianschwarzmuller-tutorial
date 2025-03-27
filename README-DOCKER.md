@@ -1,5 +1,13 @@
 # 01 Getting Started
 
+- course outline
+
+<img
+src='exercise_files/course-outline.png'
+alt='course-outline.png'
+width=600
+/>
+
 ## docker installation
 
 ### install docker desktop
@@ -16,10 +24,21 @@ powershell as administrator: `wsl.exe --update`
 ## build a docker file
 
 - root folder create a 'Dockerfile'
+
+```Dockerfile
+FROM node:14
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD [ "node", "app.mjs" ]
+```
+
 - build within current directory
 - build image
 
-```shell
+```sh
 docker build .
 ```
 
@@ -30,6 +49,12 @@ docker build .
 - on port '3000:3000' which reaches application running on port 3000
 - this allows us to goto localhost:3000
 - containers are concrete instances based off images
+
+<img
+src='exercise_files/docker-run--p.png'
+alt='docker-run--p.png'
+width=600
+/>
 
 ```shell
 docker run -p 3000:3000 <hash>
@@ -60,7 +85,8 @@ docker run -it node
 - with a Dockerfile
 - in root of project
 - FROM node - tells docker we want to build up our image from another image
-- COPY . . - first . where to copy files from, second . where to copy files to in container image
+- COPY . . 
+- first . where to copy files from, second . where to copy files to in container image
 
 ```Dockerfile
 FROM node
