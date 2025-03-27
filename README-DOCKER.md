@@ -3,7 +3,7 @@
 - course outline
 
 <img
-src='exercise_files/course-outline.png'
+src='exercise_files/01-course-outline.png'
 alt='course-outline.png'
 width=600
 />
@@ -11,15 +11,7 @@ width=600
 ## docker installation
 
 ### install docker desktop
-
-#### below install is if you have windows enterprise or home
-```
-hyperV - `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All`
-container - `Enable-WindowsOptionalFeature -Online -FeatureName containers –All`
-powershell as administrator: `wsl.exe --update`
-```
-
-# 02 Docker Images & Containers: Fundamentals
+- download docker desktop for windows
 
 ## build a docker file
 
@@ -44,21 +36,31 @@ docker build .
 
 ## running docker
 
-- after build, it outputs: 'writing image sha256: <hash>'
+- after build, it outputs: 'writing image sha256: `<hash>`'
 - images are read-only and need to be rebuilt to add new content
 - on port '3000:3000' which reaches application running on port 3000
 - this allows us to goto localhost:3000
-- containers are concrete instances based off images
+- containers are concrete instances based off images  
+
+- image -> getting the `<hash>` from 'docker desktop'
 
 <img
-src='exercise_files/docker-run--p.png'
-alt='docker-run--p.png'
+src='exercise_files/01-getting-docker-image-id.png'
+alt='01-getting-docker-image-id.png'
 width=600
-/>
+/> 
 
 ```shell
 docker run -p 3000:3000 <hash>
 ```
+
+able to visit http:localhost:3000
+
+<img
+src='exercise_files/01-localhost.png'
+alt='01-localhost.png'
+width=600
+/>
 
 ## stopping
 
@@ -69,6 +71,8 @@ docker run -p 3000:3000 <hash>
 docker ps
 docker stop <X>
 ```
+
+# 02 Docker Images & Containers: Fundamentals
 
 ## exposing an interactive session from built image
 
